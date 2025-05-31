@@ -1,0 +1,5 @@
+
+//to create new project inside empty folder 
+forge init 
+//to create new project folder with foundery
+forge init new-project -f 
