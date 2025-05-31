@@ -68,6 +68,17 @@ require(usdPrice > 0, "Invalid price");
 | Deployer | [`0x63D15cDeAee5911e5d192f6212384215Dc8faCd0`] |
 | Transaction hash | [`0x79541e2e18680f1793f61695c1d0223ac940d8b92d65c2322c35d0fdb4536477`](https://sepolia.scrollscan.com/address/0x...) |
 
+### 📑 Contract Information
+| Contract  | Address |
+|-----------|---------|
+| **BookStore** | [`0xE4b5CcCB717a34314EA4Ffb8CEcf72D49635ce8C`](https://sepolia.scrollscan.com/address/0xE4b5CcCB717a34314EA4Ffb8CEcf72D49635ce8C) |
+
+### 🔗 Deployment Transaction
+| Field | Value |
+|-------|-------|
+| **Deployer** | [`0x63D15cDeAee5911e5d192f6212384215Dc8faCd0`](https://sepolia.scrollscan.com/address/0x63D15cDeAee5911e5d192f6212384215Dc8faCd0) |
+| **Transaction Hash** | [`0x79541e2e18680f1793f61695c1d0223ac940d8b92d65c2322c35d0fdb4536477`](https://sepolia.scrollscan.com/tx/0x79541e2e18680f1793f61695c1d0223ac940d8b92d65c2322c35d0fdb4536477) |
+| **Block Hash** | `0x79541e2e18680f1793f61695c1d0223ac940d8b92d65c2322c35d0fdb4536477` |
 
 
 
