@@ -4,7 +4,7 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 // export const dynamic = "force-dynamic"; // Add this line
-import { headers } from "next/headers"; // added
+// import { headers } from "next/headers"; // added
 import ContextProvider from "@/context";
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersObj = await headers();
+  // const headersObj = await headers();
   const cookies = headersObj.get("cookie");
 
   return (
