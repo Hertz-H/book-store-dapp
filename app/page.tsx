@@ -441,7 +441,7 @@ export default function Home() {
   }
 
   const [books, setBooks] = useState<Book[]>([]);
-  const [displayedBook, setDisplayedBook] = useState<Book>(null);
+  const [displayedBook, setDisplayedBook] = useState<Book | null>(null);
   const [bookIdInput, setbookIdInput] = useState("");
 
   const bookId = bookIdInput ? BigInt(bookIdInput) : undefined;
