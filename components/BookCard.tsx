@@ -67,7 +67,6 @@ export default function BookCard({ book, contractConfig }: BookCardProps) {
       console.log(book.id);
       console.log(weiAmount);
 
-      setIsPurchasing(true);
       await writeContract({
         ...contractConfig,
         functionName: "purchaseBook",
@@ -77,8 +76,6 @@ export default function BookCard({ book, contractConfig }: BookCardProps) {
     } catch (error) {
       console.error("Purchase failed:", error);
       alert("Purchase failed. Please try again.");
-    } finally {
-      setIsPurchasing(false);
     }
   };
 
