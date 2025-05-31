@@ -18,12 +18,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   // const headersObj = await headers();
-  const cookies = headersObj.get("cookie");
+  // const cookies = headersObj.get("cookie");
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ContextProvider cookies={cookies}>{children}</ContextProvider>
+        <ContextProvider cookies={null}>{children}</ContextProvider>
       </body>
     </html>
   );
