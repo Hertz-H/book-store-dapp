@@ -462,7 +462,7 @@ export default function Home() {
     data: booksList,
     isError: getAllBooksError,
     refetch: getAllBooks,
-  } = useReadContract({
+  } = useReadContract<Book[]>({
     ...wagmiContractConfig,
     functionName: "getAllBooks",
   });
