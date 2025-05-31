@@ -446,6 +446,7 @@ export default function Home() {
   const [books, setBooks] = useState<Book[]>([]);
   const [displayedBook, setDisplayedBook] = useState<Book | null>(null);
   const [bookIdInput, setbookIdInput] = useState("");
+  const [balance, setBalance] = useState<BigInteger | null>(null);
 
   const bookId = bookIdInput ? BigInt(bookIdInput) : undefined;
 
@@ -479,7 +480,7 @@ export default function Home() {
   const handelGetContractBalance = async () => {
     try {
       await getContractBalance();
-      console.log(contractBalance);
+      // setBalance(contractBalance as bigint);
     } catch (getContractBalanceError) {
       console.log(`error fetching address  : ${getContractBalanceError}`);
     }
@@ -514,6 +515,7 @@ export default function Home() {
         ...wagmiContractConfig,
         functionName: "withdraw",
       });
+      // await getContractBalance();
     } catch (error) {
       console.error("withdraw failed:", error);
       alert("Purchase failed. Please try again.");
@@ -620,7 +622,9 @@ export default function Home() {
         <button onClick={() => handelGetContractBalance()}>
           Get Contract balance in wei
         </button>
-        <p className="text-center text-gray-600">{contractBalance} </p>
+        <p className="text-center text-gray-600">
+          {contractBalance !== undefined ? contractBalance?.toString() : ""}
+        </p>
       </div>
       <div>
         <button onClick={handelWithdrawFromContractBalance}>withdraw</button>
