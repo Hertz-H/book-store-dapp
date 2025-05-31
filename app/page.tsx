@@ -12,7 +12,7 @@ export default function Home() {
   const { address, isConnected } = useAccount();
   const { writeContract } = useWriteContract();
   const wagmiContractConfig = {
-    address: "0x37213ea8814a994B9dD7d085c70c69c99fBA0fE2",
+    address: 0x37213ea8814a994b9dd7d085c70c69c99fba0fe2,
     abi: [
       {
         inputs: [
