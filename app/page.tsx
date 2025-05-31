@@ -462,7 +462,7 @@ export default function Home() {
     data: booksList,
     isError: getAllBooksError,
     refetch: getAllBooks,
-  } = useReadContract<Book[]>({
+  } = useReadContract({
     ...wagmiContractConfig,
     functionName: "getAllBooks",
   });
@@ -524,8 +524,10 @@ export default function Home() {
       await getAllBooks();
 
       console.log(booksList);
+      // const fetchedBooksList=
+      const fetchedBooksList = booksList as Book[];
 
-      const formattedBooks = booksList.map((item: any) => ({
+      const formattedBooks = fetchedBooksList.map((item: any) => ({
         id: BigInt(item.id),
         usdPrice: BigInt(item.usdPrice),
         stock: BigInt(item.stock),
