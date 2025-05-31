@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import React, { useState } from "react";
+
 import {
   useReadContract,
   useWriteContract,
@@ -9,10 +10,12 @@ import {
 } from "wagmi";
 import BookCard from "../components/BookCard";
 export default function Home() {
+  const CONTRACT_ADDRESS: `0x${string}` =
+    "0x37213ea8814a994b9dd7d085c70c69c99fba0fe2";
   const { address, isConnected } = useAccount();
   const { writeContract } = useWriteContract();
   const wagmiContractConfig = {
-    address: 0x37213ea8814a994b9dd7d085c70c69c99fba0fe2,
+    address: CONTRACT_ADDRESS,
     abi: [
       {
         inputs: [
