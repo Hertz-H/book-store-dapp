@@ -73,6 +73,12 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: Debug Environment Variables
+        run: |
+          echo "Checking NEXT_PUBLIC_PROJECT_ID..."
+          echo "Value from secrets: ${{ secrets.NEXT_PUBLIC_PROJECT_ID }}"
+          printenv | grep NEXT_PUBLIC_PROJECT_ID || echo "NEXT_PUBLIC_PROJECT_ID not found in environment"
+          echo "--- End of env debug ---"
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
