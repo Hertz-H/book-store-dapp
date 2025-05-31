@@ -11,10 +11,8 @@ eth-bookstore/
 ├── lib/                      # Foundry dependencies
 ├── src/                      # Main contracts
 │   ├── BookStore.sol         # Core store logic
-│   └── interfaces/           # External interfaces
 ├── test/                     # Foundry tests
 │   ├── BookStore.t.sol       # Main test suite
-│   └── fuzz/                 # Fuzz tests
 ├── script/                   # Deployment scripts
 ├── foundry.toml              # Configuration
 └── README.md                 # This file
@@ -53,13 +51,15 @@ pragma solidity 0.8.25; // No floating pragma
 ```solidity
 require(book.exists, "Book does not exist");
 require(book.stock > 0, "Out of stock");
+require(usdPrice > 0, "Invalid price");
+
 ```
 
 ## 📜 Contract Addresses (Scroll Sepolia)
 
 | Contract  | Address                                                 |
 | --------- | ------------------------------------------------------- |
-| BookStore | [`0x...`](https://sepolia.scrollscan.com/address/0x...) |
+| BookStore | [`0x79541e2e18680f1793f61695c1d0223ac940d8b92d65c2322c35d0fdb4536477`](https://sepolia.scrollscan.com/address/0x...) |
 
 ## 🚀 Quick Start
 
@@ -78,8 +78,8 @@ cd frontend && npm install
 ### Testing
 
 ```bash
-forge test -vvv  # Verbose testing
-forge test --match-test testPurchaseBook -vv  # Run specific test
+forge test 
+
 ```
 
 ### Deployment
@@ -109,17 +109,6 @@ npm start
 
 [![Demo Video](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](https://youtu.be/VIDEO_ID)
 
-## 📚 Resources
-
-- [Foundry Book](https://book.getfoundry.sh)
-- [Scroll Docs](https://docs.scroll.io)
-- [Chainlink Feeds](https://docs.chain.link/data-feeds)
-
----
-
-> 💡 **Note**: Replace placeholder values (`0x...`, `VIDEO_ID`) with your actual project data before sharing.
-
-````
 
 Key GitHub-specific improvements:
 1. Added emojis for better visual scanning 📚🔐🚀
