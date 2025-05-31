@@ -1,8 +1,13 @@
-# 📚 ETH BookStore - Decentralized E-Commerce with Stable USD Pricing
+# 📚 ETH BookStore - Decentralized E-Store with Stable USD Pricing
 
 ![Project Banner](https://via.placeholder.com/1200x400?text=ETH+BookStore+DApp)
 
 A Foundry-implemented decentralized bookstore where users can purchase books using ETH at stable USD prices, powered by Chainlink Price Feeds.
+
+## About This Project
+
+### Project Description
+The ETH BookStore is a decentralized e-store application built with Foundry that allows users to purchase books using Ethereum (ETH) while maintaining stable USD pricing. The system uses Chainlink Data Feeds to convert USD prices to ETH .
 
 ## 🏗️ Project Structure (Foundry)
 
@@ -59,7 +64,13 @@ require(usdPrice > 0, "Invalid price");
 
 | Contract  | Address                                                 |
 | --------- | ------------------------------------------------------- |
-| BookStore | [`0x79541e2e18680f1793f61695c1d0223ac940d8b92d65c2322c35d0fdb4536477`](https://sepolia.scrollscan.com/address/0x...) |
+| BookStore | [`0xE4b5CcCB717a34314EA4Ffb8CEcf72D49635ce8C`] |
+| Deployer | [`0x63D15cDeAee5911e5d192f6212384215Dc8faCd0`] |
+| Transaction hash | [`0x79541e2e18680f1793f61695c1d0223ac940d8b92d65c2322c35d0fdb4536477`](https://sepolia.scrollscan.com/address/0x...) |
+
+
+
+
 
 ## 🚀 Quick Start
 
