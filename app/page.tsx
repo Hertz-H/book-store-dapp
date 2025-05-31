@@ -559,7 +559,8 @@ export default function Home() {
   useWatchContractEvent({
     ...wagmiContractConfig,
     eventName: "BookPurchased",
-    onLogs(logs) {
+    onLogs(logs: any) {
+      // const args = logs[0]?.args;
       console.log("New purchase event:", logs);
       console.log("New purchase event:", logs[0]["args"]);
 
@@ -568,7 +569,7 @@ export default function Home() {
       const usdPrice = (Number(logs[0]["args"].usdPrice) / 100).toFixed(2);
       const stock = Number(logs[0]["args"].newStock);
       const bookIdNum = Number(logs[0]["args"].bookId);
-      const buyer = $logs[0]["args"].buyer.toString();
+      const buyer = logs[0]["args"].buyer.toString();
       // Convert cents to dollars
       if (buyer == address) {
         console.log(`Purchase Successful!\n
@@ -582,13 +583,13 @@ export default function Home() {
           Buyer: ${logs[0]["args"].buyer}\n
           New Stock: ${logs[0]["args"].newStock}`);
       }
-      setBooks((prevBooks) =>
-        prevBooks.map((book) =>
+      setBooks((prevBooks: any) =>
+        prevBooks.map((book: any) =>
           book.id == bookIdNum ? { ...book, stock: stock } : book
         )
       );
       console.log("in the event after purchase");
-      setPurchaseEvents((prev) => [...prev, ...logs]);
+      // setPurchaseEvents((prev) => [...prev, ...logs]);
     },
   });
 
@@ -608,17 +609,7 @@ export default function Home() {
           {address} {isConnected ? "Connected" : "Not Connected"}
         </button>
       </div>
-      <div>
-        <input
-          type="number"
-          value={bookIdInput}
-          onChange={(e) => setbookIdInput(e.target.value)}
-          placeholder="Enter a number"
-        />
-        <button onClick={() => handelShow()}>Refetch</button>
-
-        {/* <a href="" /> */}
-      </div>
+      <div>{/* <a href="" /> */}</div>
       <div>
         <button onClick={() => handelSeedBooks()}>seed Books</button>
       </div>
@@ -629,7 +620,7 @@ export default function Home() {
         <button onClick={() => handelGetContractBalance()}>
           Get Contract balance in wei
         </button>
-        <p className="text-center text-gray-600">{contractBalance} in wei </p>
+        <p className="text-center text-gray-600">{contractBalance} </p>
       </div>
       <div>
         <button onClick={handelWithdrawFromContractBalance}>withdraw</button>
