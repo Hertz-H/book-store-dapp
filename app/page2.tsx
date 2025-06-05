@@ -1,6 +1,8 @@
 "use client";
 import { useEffect } from "react";
 import React, { useState } from "react";
+import { Toaster } from "@/components/ui/toaster";
+import { useToast } from "@/components/ui/use-toast";
 
 import {
   useReadContract,
@@ -9,7 +11,67 @@ import {
   useWatchContractEvent,
 } from "wagmi";
 import BookCard from "../components/BookCard";
+import type { BookType, CartItemType } from "../lib/types";
 export default function Home() {
+  const mockBooks: BookType[] = [
+    {
+      id: "1",
+      title: "The Ethereum Revolution",
+      author: "Vitalik Buterin",
+      coverImage: "/placeholder.svg?height=300&width=200",
+      priceUSD: 29.99,
+      priceETH: 0.015,
+      priceWei: "15000000000000000",
+      stock: 10,
+      description:
+        "A comprehensive guide to Ethereum and blockchain technology.",
+    },
+    {
+      id: "2",
+      title: "Web3 Development",
+      author: "Gavin Wood",
+      coverImage: "/placeholder.svg?height=300&width=200",
+      priceUSD: 39.99,
+      priceETH: 0.02,
+      priceWei: "20000000000000000",
+      stock: 5,
+      description: "Learn how to build decentralized applications on Ethereum.",
+    },
+    {
+      id: "3",
+      title: "Blockchain Basics",
+      author: "Charles Hoskinson",
+      coverImage: "/placeholder.svg?height=300&width=200",
+      priceUSD: 19.99,
+      priceETH: 0.01,
+      priceWei: "10000000000000000",
+      stock: 15,
+      description:
+        "An introduction to blockchain technology and cryptocurrencies.",
+    },
+  ];
+  const [books, setBooks] = useState<BookType[]>(mockBooks);
+  const [cart, setCart] = useState<CartItemType[]>([]);
+  const addToCart = (book: BookType) => {
+    const existingItem = cart.find((item) => item.book.id === book.id);
+
+    if (existingItem) {
+      setCart(
+        cart.map((item) =>
+          item.book.id === book.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      setCart([...cart, { book, quantity: 1 }]);
+    }
+
+    toast({
+      title: "Added to Cart",
+      description: `${book.title} added to your cart`,
+    });
+  };
   const CONTRACT_ADDRESS: `0x${string}` =
     "0x37213ea8814a994b9dd7d085c70c69c99fba0fe2";
   const { address, isConnected } = useAccount();
@@ -443,7 +505,7 @@ export default function Home() {
     imageUrl: string;
   }
 
-  const [books, setBooks] = useState<Book[]>([]);
+  // const [books, setBooks] = useState<Book[]>([]);
   const [displayedBook, setDisplayedBook] = useState<Book | null>(null);
   const [bookIdInput, setbookIdInput] = useState("");
   const [balance, setBalance] = useState<BigInteger | null>(null);
@@ -612,50 +674,7 @@ export default function Home() {
         </button>
       </div>
       <div>{/* <a href="" /> */}</div>
-      <div>
-        <button onClick={() => handelSeedBooks()}>seed Books</button>
-      </div>
-      <div>
-        <button onClick={() => handelGetAllBooks()}>Get All Books</button>
-      </div>
-      <div>
-        <button onClick={() => handelGetContractBalance()}>
-          Get Contract balance in wei
-        </button>
-        <p className="text-center text-gray-600">
-          {contractBalance !== undefined ? contractBalance?.toString() : ""}
-        </p>
-      </div>
-      <div>
-        <button onClick={handelWithdrawFromContractBalance}>withdraw</button>
-      </div>
-      <div className="h-48 relative bg-white shadow rounded-md">
-        <div className="font-primary text-palette-primary text-2xl pt-4 px-4 font-semibold">
-          The Player
-        </div>
-        <div className="text-lg text-gray-600 p-4 font-primary font-light">
-          Catch this sticker today!
-        </div>
-        <div className="text-palette-dark font-primary font-medium text-base absolute bottom-0 right-0 mb-4 pl-8 pr-4 pb-1 pt-2 bg-palette-lighter rounded-tl-sm triangle">
-          $<span className="text-lg">9.99</span>
-        </div>
-        <button
-          // onClick={handlePurchase}
-          className="absolute bottom-0 left-0 mb-4 ml-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-        >
-          Purchase
-        </button>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {books.map((bookItem) => (
-          <BookCard
-            key={bookItem.id.toString()}
-            book={bookItem}
-            contractConfig={wagmiContractConfig}
-          />
-        ))}
-      </div>
+      <BookGrid books={books} addToCart={addToCart} />
     </>
   );
 }
