@@ -120,15 +120,15 @@ SCROLL_SEPOLIA_RPC_URL=https://sepolia-rpc.scroll.io/
 ---
 ### Deployment
 
-1. Create `.env`:
+1. Using .env directly   :
 
 ```ini
-SCROLL_SEPOLIA_RPC_URL=[https://...](https://sepolia-rpc.scroll.io/)
-PRIVATE_KEY=0x...
+source .env
+forge create BookStore --private-key $PRIVATE_KEY --rpc-url $SCROLL_SEPOLIA_RPC_URL --broadcast
 
 ```
 
-2. Deploy:
+2. Or Using Makfile command:
 
 ```bash
 make deploy
