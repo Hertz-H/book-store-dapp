@@ -109,22 +109,22 @@ forge test
 1. Create `.env`:
 
 ```ini
-SCROLL_SEPOLIA_RPC_URL=https://...
+SCROLL_SEPOLIA_RPC_URL=[https://...](https://sepolia-rpc.scroll.io/)
 PRIVATE_KEY=0x...
-ETHERSCAN_API_KEY=...
+
 ```
 
 2. Deploy:
 
 ```bash
-forge script script/Deploy.s.sol --rpc-url $SCROLL_SEPOLIA_RPC_URL --broadcast --verify -vvvv
+make deploy
 ```
 
 ## 🌐 Frontend Development
 
 ```bash
 cd frontend
-npm start
+npm run dev 
 ```
 
 ## 📹 Demo
