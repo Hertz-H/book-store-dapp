@@ -120,9 +120,9 @@ SCROLL_SEPOLIA_RPC_URL=https://sepolia-rpc.scroll.io/
 ---
 ### Deployment
 
-1. Using .env directly   :
+1. Using forge command:
 
-```ini
+```bash
 source .env
 forge create BookStore --private-key $PRIVATE_KEY --rpc-url $SCROLL_SEPOLIA_RPC_URL --broadcast
 
