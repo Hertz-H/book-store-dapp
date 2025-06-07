@@ -103,7 +103,21 @@ cd frontend && npm install
 forge test 
 
 ```
+### 🔐 Environment Variables
 
+Create a `.env` file in the `Frontend/` directory:
+
+```env
+NEXT_PUBLIC_PROJECT_ID=57e1f5e0adb6153508d54bf659d3ddee
+```
+
+Create a `.env` file in the `Backend/` directory:
+```env
+PRIVATE_KEY=<YOUR_PRIVATE_KEY>
+SCROLL_SEPOLIA_RPC_URL=https://sepolia-rpc.scroll.io/
+```
+
+---
 ### Deployment
 
 1. Create `.env`:
